@@ -14,7 +14,7 @@ with open("./metafile/samples_2.json", "r") as f:
 for set in range(1, len(dict_test1) + 1):
     print("set", set)
     dir = "./wav/set{}".format(set)
-    for i in range(len(dict_test1[str(set)]) // 2 + 1):
+    for i in range(len(dict_test1[str(set)]) // 2):
         print("no.", i)
         for inst in ["drums", "bass", "piano", "guitar", "residuals"]:
             print(inst)
