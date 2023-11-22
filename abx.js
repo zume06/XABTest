@@ -155,8 +155,7 @@ function init() {
     n = 0;
     setAudio();
     evalCheck();
-    setButton1();
-    setButton2();
+    setButton();
 }
 
 function evalCheck() {
@@ -209,7 +208,7 @@ function evaluation() {
             scores[n] = i + 1;
         }
     }
-    setButton1();
+    setButton();
 }
 
 var point = [];
