@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 # XABTest
-=======
 # Inst Similarity Test
 
 ## Simple explanation of this opensource
@@ -38,4 +36,3 @@ If you want to conduct tests other than a ABX test, you need to modify the code 
 You can utilize [MOSTest](https://github.com/chomeyama/MOSTest) if you want to conduct MOS test.
 
 Please feel free to ask any questions you may have.
->>>>>>> master
