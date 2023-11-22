@@ -76,7 +76,9 @@ function start_experiment() {
     file_list = makeFileList(sample_list_path);
     outfile = "inst_simi_2023au_" + name + "_set" + set_num + ".csv";
     scores = (new Array(file_list.length)).fill(0);
+    point = (new Array(file_list.length)).fill(0);
     eval = document.getElementsByName("eval");
+    select = document.getElementsByName("select");
     init();
 
 }
@@ -155,7 +157,9 @@ function init() {
     n = 0;
     setAudio();
     evalCheck();
-    setButton();
+    selectCheck();
+    setButton1();
+    setButton2();
 }
 
 function evalCheck() {
@@ -170,7 +174,20 @@ function evalCheck() {
     }
 }
 
-function setButton() {
+function selectCheck() {
+    const c = scores[n];
+    if ((c <= 0) || (c > select.length)) {
+        for (var i = 0; i < select.length; i++) {
+            select[i].checked = false;
+        }
+    }
+    else {
+        select[c - 1].checked = true;
+    }
+}
+
+
+function setButton1() {
     if (n == (scores.length - 1)) {
         document.getElementById("prev").disabled = false;
         document.getElementById("next2").disabled = true;
@@ -200,26 +217,56 @@ function setButton() {
     }
 }
 
+function setButton2() {
+    if (n == (point.length - 1)) {
+        document.getElementById("prev").disabled = false;
+        document.getElementById("next2").disabled = true;
+        document.getElementById("finish").disabled = true;
+        for (var i = 0; i < select.length; i++) {
+            if (select[i].checked) {
+                document.getElementById("finish").disabled = false;
+                break;
+            }
+        }
+    }
+    else {
+        if (n == 0) {
+            document.getElementById("prev").disabled = true;
+        }
+        else {
+            document.getElementById("prev").disabled = false;
+        }
+        document.getElementById("next2").disabled = true;
+        document.getElementById("finish").disabled = true;
+        for (var i = 0; i < select.length; i++) {
+            if (select[i].checked) {
+                document.getElementById("next2").disabled = false;
+                break;
+            }
+        }
+    }
+}
+
 function evaluation() {
     for (var i = 0; i < eval.length; i++) {
         if (eval[i].checked) {
             scores[n] = i + 1;
         }
     }
-    setButton();
+    setButton1();
 }
 function selectpoint() {
-    for (var i = 0; i < eval.length; i++) {
+    for (var i = 0; i < select.length; i++) {
         if (select[i].checked) {
             point[n] = i + 1;
         }
     }
-    setButton();
+    setButton2();
 }
 
 function exportCSV() {
     var ans = [];
-    var ans_AB = [];
+    var conf = [];
     for (var i = 0; i < file_list.length; i++) {
         if (scores[i] == 1) {
             ans[i] = "A+"
@@ -266,6 +313,7 @@ function next() {
     n++;
     setAudio();
     evalCheck();
+    selectCheck();
     setButton();
 }
 
@@ -273,6 +321,7 @@ function prev() {
     n--;
     setAudio();
     evalCheck();
+    selectCheck();
     setButton();
 }
 
