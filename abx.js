@@ -113,26 +113,13 @@ function makeFileList(sample_list_path) {
 
     var files = Array();
     for (var i = 0; i < sample[0].length; i++) {
-        if (i < (sample[0].length / 2)) {
-            triplets = [
-                [sample[0][i], sample[5][i], sample[10][i]],
-                [sample[1][i], sample[6][i], sample[11][i]],
-                [sample[2][i], sample[7][i], sample[12][i]],
-                [sample[3][i], sample[8][i], sample[13][i]],
-                [sample[4][i], sample[9][i], sample[14][i]],
-            ]
-        }
-        else {
-            triplets = [
-                [sample[0][i], sample[10][i], sample[5][i]],
-                [sample[1][i], sample[11][i], sample[6][i]],
-                [sample[2][i], sample[12][i], sample[7][i]],
-                [sample[3][i], sample[13][i], sample[8][i]],
-                [sample[4][i], sample[14][i], sample[9][i]],
-            ]
-        }
-
-
+        triplets = [
+            [sample[0][i], sample[5][i], sample[10][i]],
+            [sample[1][i], sample[6][i], sample[11][i]],
+            [sample[2][i], sample[7][i], sample[12][i]],
+            [sample[3][i], sample[8][i], sample[13][i]],
+            [sample[4][i], sample[9][i], sample[14][i]],
+        ]
         /*
             end
         */
