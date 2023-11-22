@@ -11,7 +11,7 @@ with open("./metafile/samples_1.json", "r") as f:
 with open("./metafile/samples_2.json", "r") as f:
     dict_test2 = json.load(f)
 
-for set in range(len(dict_test1)):
+for set in range(1, len(dict_test1) + 1):
     print("set", set)
     dir = "./wav/set{}".format(set)
     for i in range(len(dict_test1[str(set)]) // 2 + 1):

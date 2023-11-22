@@ -26,11 +26,12 @@ print(anchors)
 # args = parser.parse_args()
 
 # test1
+print("test1")
 dict_tri = {}
-for i in range(7):
+for i in range(1, 8):
     print("set ", i)
     dict_tri[i] = {}
-    anchors_mini = anchors[i * 8 : (i + 1) * 8]
+    anchors_mini = anchors[(i - 1) * 8 : i * 8]
     for j, X in enumerate(anchors_mini):
         print("sample ", j)
         dict_tri[i][j] = {}
@@ -45,16 +46,17 @@ for i in range(7):
         dict_tri[i][j]["A"] = A
         dict_tri[i][j]["B"] = B
         print("X, A, B:", X, A, B)
-print(dict_tri)
+# print(dict_tri)
 with open("./metafile/samples_1.json", "w") as f:
     json.dump(dict_tri, f, indent=4)
 
 # test2
+print("test2")
 dict_tri = {}
-for i in range(7):
+for i in range(1, 8):
     print("set ", i)
     dict_tri[i] = {}
-    anchors_mini = anchors[i * 8 : (i + 1) * 8]
+    anchors_mini = anchors[(i - 1) * 8 : i * 8]
     for j, X in enumerate(anchors_mini):
         print("sample ", j)
         dict_tri[i][j] = {}
@@ -64,6 +66,6 @@ for i in range(7):
         dict_tri[i][j]["A"] = A
         dict_tri[i][j]["B"] = B
         print("X, A, B:", X, A, B)
-print(dict_tri)
+# print(dict_tri)
 with open("./metafile/samples_2.json", "w") as f:
     json.dump(dict_tri, f, indent=4)
