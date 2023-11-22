@@ -232,6 +232,9 @@ function selectpoint() {
     if (melodyCheckbox.checked) {
         point[n].push("melody");
     }
+    rhythmCheckbox.checked = false;
+    timbreCheckbox.checked = false;
+    melodyCheckbox.checked = false;
 }
 
 
