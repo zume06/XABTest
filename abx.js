@@ -264,7 +264,7 @@ function exportCSV() {
             + scores[i] + ","
             + conf[i] + ","
             + ans[i] + ","
-            + point[i].join(",") + "\r\n";
+            + point[i] + "\r\n";
     }
 
     const link = document.createElement("a");
