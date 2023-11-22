@@ -153,6 +153,7 @@ function setAudio() {
 
 function init() {
     n = 0;
+    point = [];
     setAudio();
     evalCheck();
     setButton();
@@ -264,7 +265,7 @@ function exportCSV() {
             + scores[i] + ","
             + conf[i] + ","
             + ans[i] + ","
-            + point[i] + "\r\n";
+            + point[i].join(",") + "\r\n";
     }
 
     const link = document.createElement("a");
