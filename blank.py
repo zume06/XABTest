@@ -1,4 +1,4 @@
-for set in range(10, 17):
+for set in range(1, 8):
     dir = "./wav/set{}".format(set)
     for inst in ["drums", "bass", "piano", "guitar", "residuals"]:
         with open("{}/{}_X.list".format(dir, inst), mode="a") as f:
