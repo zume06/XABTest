@@ -232,11 +232,18 @@ function selectpoint() {
     if (melodyCheckbox.checked) {
         point[n].push("melody");
     }
+}
+
+function resetCheckboxState() {
+    var rhythmCheckbox = document.getElementById("rhythmCheckbox");
+    var timbreCheckbox = document.getElementById("timbreCheckbox");
+    var melodyCheckbox = document.getElementById("melodyCheckbox");
+
+    // チェックボックスの状態をリセット
     rhythmCheckbox.checked = false;
     timbreCheckbox.checked = false;
     melodyCheckbox.checked = false;
 }
-
 
 function exportCSV() {
     var ans = [];
@@ -287,6 +294,7 @@ function next() {
     n++;
     setAudio();
     evalCheck();
+    resetCheckboxState();
     setButton();
 }
 
@@ -294,6 +302,7 @@ function prev() {
     n--;
     setAudio();
     evalCheck();
+    resetCheckboxState();
     setButton();
 }
 
