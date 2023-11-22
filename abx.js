@@ -157,6 +157,7 @@ function init() {
     setAudio();
     evalCheck();
     setButton();
+    resetCheckboxState();
 }
 
 function evalCheck() {
