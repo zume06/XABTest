@@ -175,7 +175,7 @@ function evalCheck() {
 }
 
 function selectCheck() {
-    const c = scores[n];
+    const c = point[n];
     if ((c <= 0) || (c > select.length)) {
         for (var i = 0; i < select.length; i++) {
             select[i].checked = false;
@@ -256,11 +256,18 @@ function evaluation() {
     setButton1();
 }
 function selectpoint() {
+    var selectedPoints = [];  // チェックが入った番号を格納する配列
+
     for (var i = 0; i < select.length; i++) {
         if (select[i].checked) {
-            point[n] = i + 1;
+            selectedPoints.push(i + 1);  // チェックが入った番号を配列に追加
         }
     }
+
+    // point配列に選択された番号を記録
+    point[n] = selectedPoints;
+
+    // ボタンの状態を更新
     setButton2();
 }
 
