@@ -76,7 +76,9 @@ function start_experiment() {
     file_list = makeFileList(sample_list_path);
     outfile = "inst_simi_2023au_" + name + "_set" + set_num + ".csv";
     scores = (new Array(file_list.length)).fill(0);
+    point = (new Array(file_list.length)).fill(0);
     eval = document.getElementsByName("eval");
+    select = document.getElementsByName("select");
     init();
 
 }
@@ -155,6 +157,7 @@ function init() {
     n = 0;
     setAudio();
     evalCheck();
+    selectCheck();
     setButton1();
     setButton2();
 }
@@ -171,8 +174,20 @@ function evalCheck() {
     }
 }
 
+function selectCheck() {
+    const c = point[n];
+    if ((c <= 0) || (c > select.length)) {
+        for (var i = 0; i < select.length; i++) {
+            select[i].checked = false;
+        }
+    }
+    else {
+        select[c - 1].checked = true;
+    }
+}
 
-function setButton() {
+
+function setButton1() {
     if (n == (scores.length - 1)) {
         document.getElementById("prev").disabled = false;
         document.getElementById("next2").disabled = true;
@@ -202,6 +217,35 @@ function setButton() {
     }
 }
 
+function setButton2() {
+    if (n == (point.length - 1)) {
+        document.getElementById("prev").disabled = false;
+        document.getElementById("next2").disabled = true;
+        document.getElementById("finish").disabled = true;
+        for (var i = 0; i < select.length; i++) {
+            if (select[i].checked) {
+                document.getElementById("finish").disabled = false;
+                break;
+            }
+        }
+    }
+    else {
+        if (n == 0) {
+            document.getElementById("prev").disabled = true;
+        }
+        else {
+            document.getElementById("prev").disabled = false;
+        }
+        document.getElementById("next2").disabled = true;
+        document.getElementById("finish").disabled = true;
+        for (var i = 0; i < select.length; i++) {
+            if (select[i].checked) {
+                document.getElementById("next2").disabled = false;
+                break;
+            }
+        }
+    }
+}
 
 function evaluation() {
     for (var i = 0; i < eval.length; i++) {
@@ -211,29 +255,21 @@ function evaluation() {
     }
     setButton1();
 }
-
-var point = [];
-
-// (追加) チェックボックスがクリックされたときに呼び出される関数
 function selectpoint() {
-    // (追加) チェックボックスの選択結果を配列に保存
-    var rhythmCheckbox = document.getElementById("rhythmCheckbox");
-    var timbreCheckbox = document.getElementById("timbreCheckbox");
-    var melodyCheckbox = document.getElementById("melodyCheckbox");
+    var selectedPoints = [];  // チェックが入った番号を格納する配列
 
-    point[n] = [];
+    for (var i = 0; i < select.length; i++) {
+        if (select[i].checked) {
+            selectedPoints.push(i + 1);  // チェックが入った番号を配列に追加
+        }
+    }
 
-    if (rhythmCheckbox.checked) {
-        point[n].push("rhythm");
-    }
-    if (timbreCheckbox.checked) {
-        point[n].push("timbre");
-    }
-    if (melodyCheckbox.checked) {
-        point[n].push("melody");
-    }
+    // point配列に選択された番号を記録
+    point[n] = selectedPoints;
+
+    // ボタンの状態を更新
+    setButton2();
 }
-
 
 function exportCSV() {
     var ans = [];
@@ -284,6 +320,7 @@ function next() {
     n++;
     setAudio();
     evalCheck();
+    selectCheck();
     setButton();
 }
 
@@ -291,6 +328,7 @@ function prev() {
     n--;
     setAudio();
     evalCheck();
+    selectCheck();
     setButton();
 }
 
