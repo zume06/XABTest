@@ -46,9 +46,9 @@ for set in range(1, len(dict_test1) + 1):
                     sound = True
             print(B)
             sound = False
-            while sound == False:
+            while sound == False or segX == segB:
                 segB = random.randint(0, (len(wav_B) // sr) - 5)
-                inst_wav_cutB = wav_X[segB * sr : (segB + 5) * sr]
+                inst_wav_cutB = wav_B[segB * sr : (segB + 5) * sr]
                 Amp = np.abs(inst_wav_cutB)
                 Pow = np.mean(Amp**2)
                 if Pow > thres:
@@ -103,7 +103,7 @@ for set in range(1, len(dict_test1) + 1):
             sound = False
             while sound == False:
                 segB = random.randint(0, (len(wav_B) // sr) - 5)
-                inst_wav_cutB = wav_X[segB * sr : (segB + 5) * sr]
+                inst_wav_cutB = wav_B[segB * sr : (segB + 5) * sr]
                 Amp = np.abs(inst_wav_cutB)
                 Pow = np.mean(Amp**2)
                 if Pow > thres:
@@ -157,9 +157,9 @@ for set in range(1, len(dict_test1) + 1):
                     sound = True
             print(B)
             sound = False
-            while sound == False:
+            while sound == False or segX == segB:
                 segB = random.randint(0, (len(wav_B) // sr) - 5)
-                inst_wav_cutB = wav_X[segB * sr : (segB + 5) * sr]
+                inst_wav_cutB = wav_B[segB * sr : (segB + 5) * sr]
                 Amp = np.abs(inst_wav_cutB)
                 Pow = np.mean(Amp**2)
                 if Pow > thres:
@@ -214,7 +214,7 @@ for set in range(1, len(dict_test1) + 1):
             sound = False
             while sound == False:
                 segB = random.randint(0, (len(wav_B) // sr) - 5)
-                inst_wav_cutB = wav_X[segB * sr : (segB + 5) * sr]
+                inst_wav_cutB = wav_B[segB * sr : (segB + 5) * sr]
                 Amp = np.abs(inst_wav_cutB)
                 Pow = np.mean(Amp**2)
                 if Pow > thres:
