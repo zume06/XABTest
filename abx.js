@@ -269,19 +269,19 @@ function exportCSV() {
     var conf = [];
     for (var i = 0; i < file_list.length; i++) {
         if (scores[i] == 1) {
-            ans[i] = "A+"
+            ans[i] = "A"
             conf[i] = "+"
         }
         else if (scores[i] == 2) {
-            ans[i] = "A-"
+            ans[i] = "A"
             conf[i] = "-"
         }
         else if (scores[i] == 3) {
-            ans[i] = "B+"
+            ans[i] = "B"
             conf[i] = "+"
         }
         else if (scores[i] == 4) {
-            ans[i] = "B-"
+            ans[i] = "B"
             conf[i] = "-"
         }
     }
