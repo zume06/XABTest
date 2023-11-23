@@ -28,6 +28,13 @@ function start_experiment() {
         return false;
     }
 
+    // get enquête
+    var enq = document.getElementById("inst").value.replace(" ", "_");
+    if (enq == "") {
+        alert("If none, please write 'None'.");
+        return false;
+    }
+
     // get setlist number
     var set_num = "0"
     var number = document.getElementsByName("set");
@@ -274,7 +281,8 @@ function exportCSV() {
     }
 
     var csvData = "";
-    csvData += "" + "X" + "," + "A" + "," + "B" + "," + "score" + "," + "conf" + "," + "ans" + "," + "point1" + "," + "point2" + "," + "point3" + "\r\n";
+    csvData += "" + "X" + "," + "A" + "," + "B" + "," + "score" + "," + "conf" + "," + "ans" + "," + "point1" + "," + "point2" + "," + "point3" + "," + "enq" + "\r\n";
+    csvData += ",,,,,,,,,," + enq + "\r\n"
     for (var i = 0; i < file_list.length; i++) {
         csvData += "" + file_list[i][0] + "," + file_list[i][1] + ","
             + file_list[i][2] + ","
