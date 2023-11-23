@@ -29,9 +29,15 @@ function start_experiment() {
     }
 
     // get enquête
-    var enq = document.getElementById("inst").value.replace(" ", "_");
-    if (enq == "") {
-        alert("If none, please write 'None'.");
+    var enq_num = "0"
+    var enq = document.getElementsByName("inst");
+    for (var i = 0; i < enq.length; i++) {
+        if (enq[i].checked) {
+            enq_num = enq[i].value;
+        }
+    }
+    if (enq_num == "0") {
+        alert("Please press yes or no.");
         return false;
     }
 
@@ -280,7 +286,7 @@ function exportCSV() {
         }
     }
 
-    var enq = document.getElementById("inst").value.replace(" ", "_");
+    var enq = document.getElementsByName("inst");
     var csvData = "";
     csvData += "" + "X" + "," + "A" + "," + "B" + "," + "score" + "," + "conf" + "," + "ans" + "," + "point1" + "," + "point2" + "," + "point3" + "," + "enq" + "\r\n";
     csvData += ",,,,,,,,," + enq + "\r\n"
