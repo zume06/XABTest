@@ -195,6 +195,10 @@ function setButton() {
         document.getElementById("next2").disabled = true;
         document.getElementById("finish").disabled = true;
         for (var i = 0; i < eval.length; i++) {
+            console.log('eval[' + i + '].checked:', eval[i].checked);
+            console.log('rhythmCheckbox.checked:', rhythmCheckbox.checked);
+            console.log('timbreCheckbox.checked:', timbreCheckbox.checked);
+            console.log('melodyCheckbox.checked:', melodyCheckbox.checked);
             if ((eval[i].checked) && (rhythmCheckbox.checked || timbreCheckbox.checked || melodyCheckbox.checked)) {
                 document.getElementById("next2").disabled = false;
                 break;
