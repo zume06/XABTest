@@ -14,7 +14,7 @@ Array.prototype.shuffle = function () {
 // invalid enter key
 //フォーム送信を防止
 function invalid_enter() {
-    if (event.keyCode == 13) {
+    if (window.event.keyCode == 13) {
         return false;
     }
 }
