@@ -20,7 +20,8 @@
 
         <h2>Experimental Procedure</h2>
         <ol>
-            <li>Enter your name and <b>select the set list number you were requested</b>.</li>
+            <li>Enter your name, respond to a questionnaire about instruments you can play and <b>select the set list
+                    number you were requested</b>.</li>
             <li>Press "Start Experiment" button.</li>
             <li>First, listen to the instrument sound at the top (let's call it Sound X).<br>
                 Next, listen to the two sounds below SoundX and choose the one that you think is
@@ -49,7 +50,7 @@
 
         <h2>実験手順</h2>
         <ol>
-            <li>名前を入力し、<b>依頼されたセット番号</b>を選んで下さい。<br>
+            <li>名前を入力し、弾くことができる楽器に関するアンケートに回答し、<b>依頼されたセット番号</b>を選んで下さい。<br>
             <li>"Start Experiment"を押して下さい。</li>
             <li>初めに一番上にある楽器音を聴いて下さい。これをSound Xとします。<br>
                 次に下2つの楽器音を聴き、Sound Xに近いと思った方を選んで下さい。<br>
@@ -81,6 +82,9 @@
     <div id="Display1">
         <p> Your name: <br>
             <input type="text" id="name" value="">
+        </p>
+        <p> Instrument(s) you can play (if none, please write "None"): <br>
+            <input type="text" id="inst" value="">
         </p>
         <p> Setlist number: <br>
             <label><input type="radio" name="set" id="number" value="1">set1-1</label><br>
