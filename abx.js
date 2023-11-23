@@ -280,9 +280,10 @@ function exportCSV() {
         }
     }
 
+    var enq = document.getElementById("inst").value.replace(" ", "_");
     var csvData = "";
     csvData += "" + "X" + "," + "A" + "," + "B" + "," + "score" + "," + "conf" + "," + "ans" + "," + "point1" + "," + "point2" + "," + "point3" + "," + "enq" + "\r\n";
-    csvData += ",,,,,,,,,," + enq + "\r\n"
+    csvData += ",,,,,,,,," + enq + "\r\n"
     for (var i = 0; i < file_list.length; i++) {
         csvData += "" + file_list[i][0] + "," + file_list[i][1] + ","
             + file_list[i][2] + ","
