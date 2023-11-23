@@ -195,7 +195,7 @@ function setButton() {
         document.getElementById("next2").disabled = true;
         document.getElementById("finish").disabled = true;
         for (var i = 0; i < eval.length; i++) {
-            if ((eval[i].checked) && (rhythmCheckbox[i].checked || timbreCheckbox[i].checked || melodyCheckbox[i].checked)) {
+            if ((eval[i].checked) && (rhythmCheckbox.checked || timbreCheckbox.checked || melodyCheckbox.checked)) {
                 document.getElementById("next2").disabled = false;
                 break;
             }
