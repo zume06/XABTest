@@ -238,6 +238,7 @@ function selectpoint() {
     if (melodyCheckbox.checked) {
         point[n].push("melody");
     }
+    setButton();
 }
 
 function resetCheckboxState() {
