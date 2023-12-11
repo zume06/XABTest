@@ -15,7 +15,7 @@ def rand_elims(lst, elims):
 fname_dataname = "test_redux_136"
 with open("./metafile/jsons/{}.json".format(fname_dataname), "r") as f:
     data_no = json.load(f)
-# data_no.remove(1924)
+data_no.remove(2048)
 
 anchors = random.sample(data_no, 56)
 

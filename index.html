@@ -5,6 +5,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Musical Instrument Sound Similarity Test 2023</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Buttons</title>
+    <style>
+        /* スタイルの追加 */
+        .radio-container {
+            display: flex;
+            align-items: center;
+        }
+
+        label {
+            display: inline-block;
+            width: 2em;
+            text-align: center;
+            margin: 0 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -115,19 +131,26 @@
         <p id="audio_a"></p>
         <p id="audio_b"></p>
         <p>
-            <label><input type="radio" name="eval" onclick="evaluation()">◎<b>A</b> is closer to X</label><br>
-            <label><input type="radio" name="eval" onclick="evaluation()">○<b>A</b> might be closer to X</label><br>
-            <label><input type="radio" name="eval" onclick="evaluation()">◎<b>B</b> is closer to X</label><br>
-            <label><input type="radio" name="eval" onclick="evaluation()">○<b>B</b> might be closer to X</label><br>
-        </p>
+        <div class="radio-container">
+            <span>A</span>
+            <input type="radio" name="radioGroup" id="radio1" onclick="handleRadioClick(0)">
+            <label for="radio1">&#9898;</label>
 
-        <p>
-            <label><input type="checkbox" name="select" id="rhythmCheckbox" onclick="selectpoint()">focusing on
-                <b>rhythm（リズム）</b></label><br>
-            <label><input type="checkbox" name="select" id="timbreCheckbox" onclick="selectpoint()">focusing on
-                <b>timbre（音色）</b></label><br>
-            <label><input type="checkbox" name="select" id="melodyCheckbox" onclick="selectpoint()">focusing on
-                <b>melody（メロディ）</b></label><br>
+            <input type="radio" name="radioGroup" id="radio2" onclick="handleRadioClick(1)">
+            <label for="radio2">&#9898;</label>
+
+            <input type="radio" name="radioGroup" id="radio3" onclick="handleRadioClick(2)">
+            <label for="radio3">&#9899;</label>
+
+            <input type="radio" name="radioGroup" id="radio4" onclick="handleRadioClick(3)">
+            <label for="radio4">&#9898;</label>
+
+            <input type="radio" name="radioGroup" id="radio5" onclick="handleRadioClick(4)">
+            <label for="radio5">&#9898;</label>
+
+            <span>B</span>
+        </div>
+
         </p>
 
         <p>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Musical Instrument Sound Similarity Test 2023</title>
+</head>
+
+<body>
+
+    <!-- 注意書きなど -->
+    <div style="border:1px solid #000000; padding: 10px; border-radius: 0px; background: ##ffffff;">
+        <p>
+        <h1>Musical Instrument Sound Similarity Test</h1>
+
+        Thank you for your cooperation in my experiment.
+        This experiment is musical instrument sound similarity test.
+        I will explain the experimental procedure.
+
+        <h2>Experimental Procedure</h2>
+        <ol>
+            <li>Enter your name, answer a questionnaire to see if you can play an instrument and <b>select the set list
+                    number you were requested</b>.</li>
+            <li>Press "Start Experiment" button.</li>
+            <li>First, listen to the instrument sound at the top (let's call it Sound X).<br>
+                Next, listen to the two sounds below SoundX and choose the one that you think is
+                closer to
+                Sound X.<br>
+                If you are not sure, choose "~ <b>might be</b> closer to X".<br>
+                <b>Be sure to listen to all instrumental sounds all the way through.</b>
+            </li>
+            <li>Then, select which of the following you focused on when you responded: rhythm, timbre, or melody.<br>
+                <b>If your chosen sample (AorB) and X are similar at several points, select them all.</b>
+            </li>
+            <li>Press "next" button and start next evaluation.</li>
+            <li>When you finish this experiment, press "finish" button and download the result.<br>
+                Send it to slack or the following email address.</li>
+            <li>Email address: hashizume.yuuka@g.sp.m.is.nagoya-u.ac.jp
+            </li>
+        </ol>
+
+        <h2>Notes</h2>
+        <ul>
+            <li>This experiment takes about 15 minutes per set.</li>
+            <li>Please do not update the page during this experiment.</li>
+            <li>You may not be able to download the results on your phone, so please use your PC.</li>
+            <li>Please use headphones for this experiment.</li>
+        </ul>
+
+        <h2>実験手順</h2>
+        <ol>
+            <li>名前を入力し、楽器演奏に関するアンケートに回答し、<b>依頼されたセット番号</b>を選んで下さい。<br>
+            <li>"Start Experiment"を押して下さい。</li>
+            <li>初めに一番上にある楽器音を聴いて下さい。これをSound Xとします。<br>
+                次に下2つの楽器音を聴き、Sound Xに近いと思った方を選んで下さい。<br>
+                自信がない場合は"~ <b>might be</b> closer to X"の方を選んでください。<br>
+                <b>楽器音は全て必ず最後まで聞いてください</b>
+            </li>
+            <li>次に、今の選択がどの要素に着目した上での回答かを、リズム、音色、メロディから選択してください。<br>
+                もし、あなたが選択したサンプル(A or B)がXと複数のポイントにおいて類似していると感じる場合は、<b>それら全てにチェックを入れてください。</b>
+            </li>
+            <li>選択を終えたら"next"ボタンを押し、次の実験に進んで下さい。</li>
+            <li>評価実験を全て終えたら"finish"ボタンを押して結果をダウンロードして下さい。<br>
+                結果はSlackか下記のメールアドレスに送信して下さい。</li>
+            <li>Emailアドレス: hashizume.yuuka@g.sp.m.is.nagoya-u.ac.jp
+            </li>
+        </ol>
+
+        <h2>注意</h2>
+        <ul>
+            <li>この実験は1セットあたり凡そ15分ほど要します</li>
+            <li>実験中はページの再読み込みは行わないで下さい。</li>
+            <li>スマートフォンでは結果をダウンロードできない場合があるためPCを使用して下さい。</li>
+            <li>ヘッドホンやイヤホンを着用した状態で行って下さい。</li>
+        </ul>
+        </p>
+    </div>
+
+    <script type="text/javascript" src="abx.js"></script>
+
+    <div id="Display1">
+        <p> Your name: <br>
+            <input type="text" id="name" value="">
+        </p>
+        <p> Can you play any instrument?: <br>
+            <label><input type="radio" name="inst" id="yn" value="1">Yes</label><br>
+            <label><input type="radio" name="inst" id="yn" value="2">No</label><br>
+        </p>
+        <p> Setlist number: <br>
+            <label><input type="radio" name="set" id="number" value="1">set1-1</label><br>
+            <label><input type="radio" name="set" id="number" value="11">set1-2</label><br>
+            <label><input type="radio" name="set" id="number" value="2">set2-1</label><br>
+            <label><input type="radio" name="set" id="number" value="12">set2-2</label><br>
+            <label><input type="radio" name="set" id="number" value="3">set3-1</label><br>
+            <label><input type="radio" name="set" id="number" value="13">set3-2</label><br>
+            <label><input type="radio" name="set" id="number" value="4">set4-1</label><br>
+            <label><input type="radio" name="set" id="number" value="14">set4-2</label><br>
+            <label><input type="radio" name="set" id="number" value="5">set5-1</label><br>
+            <label><input type="radio" name="set" id="number" value="15">set5-2</label><br>
+            <label><input type="radio" name="set" id="number" value="6">set6-1</label><br>
+            <label><input type="radio" name="set" id="number" value="16">set6-2</label><br>
+            <label><input type="radio" name="set" id="number" value="7">set7-1</label><br>
+            <label><input type="radio" name="set" id="number" value="17">set7-2</label><br>
+        <p>
+            <button id="next1" onclick="start_experiment()">next</button>
+        </p>
+    </div>
+
+
+    <div id="Display2" style="display:none;">
+        <!-- 注意書きなど <body onload="init()"> -->
+        <p id="page"></p>
+        <p id="audio_x"></p>
+        <p id="audio_a"></p>
+        <p id="audio_b"></p>
+        <p>
+            <label><input type="radio" name="eval" onclick="evaluation()">◎<b>A</b> is closer to X</label><br>
+            <label><input type="radio" name="eval" onclick="evaluation()">○<b>A</b> might be closer to X</label><br>
+            <label><input type="radio" name="eval" onclick="evaluation()">◎<b>B</b> is closer to X</label><br>
+            <label><input type="radio" name="eval" onclick="evaluation()">○<b>B</b> might be closer to X</label><br>
+        </p>
+
+        <p>
+            <label><input type="checkbox" name="select" id="rhythmCheckbox" onclick="selectpoint()">focusing on
+                <b>rhythm（リズム）</b></label><br>
+            <label><input type="checkbox" name="select" id="timbreCheckbox" onclick="selectpoint()">focusing on
+                <b>timbre（音色）</b></label><br>
+            <label><input type="checkbox" name="select" id="melodyCheckbox" onclick="selectpoint()">focusing on
+                <b>melody（メロディ）</b></label><br>
+        </p>
+
+        <p>
+            <button id="prev" onclick="prev()">prev</button>
+            <button id="next2" onclick="next()">next</button>
+            <button id="finish" onclick="finish()">finish</button>
+        </p>
+
+
+</body>
+
+</html>

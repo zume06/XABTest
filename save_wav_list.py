@@ -4,6 +4,17 @@ import soundfile as sf
 import random
 import os
 
+
+def cal_avepow_1s(wave, sr, thres):
+    for i in range(len(wave) // sr):
+        wave1s = wave[i * sr : (i + 1) * sr]
+        Amp = np.abs(wave1s)
+        Pow = np.mean(Amp**2)
+        if Pow < thres:
+            return False
+    return True
+
+
 thres = 0.0001
 with open("./metafile/samples_1.json", "r") as f:
     dict_test1 = json.load(f)
@@ -31,28 +42,19 @@ for set in range(1, len(dict_test1) + 1):
             while sound == False:
                 segX = random.randint(0, (len(wav_X) // sr) - 5)
                 inst_wav_cutX = wav_X[segX * sr : (segX + 5) * sr]
-                Amp = np.abs(inst_wav_cutX)
-                Pow = np.mean(Amp**2)
-                if Pow > thres:
-                    sound = True
+                sound = cal_avepow_1s(inst_wav_cutX, sr, thres)
             print(A)
             sound = False
             while sound == False or segX == segA:
                 segA = random.randint(0, (len(wav_A) // sr) - 5)
                 inst_wav_cutA = wav_A[segA * sr : (segA + 5) * sr]
-                Amp = np.abs(inst_wav_cutA)
-                Pow = np.mean(Amp**2)
-                if Pow > thres:
-                    sound = True
+                sound = cal_avepow_1s(inst_wav_cutA, sr, thres)
             print(B)
             sound = False
             while sound == False or segX == segB:
                 segB = random.randint(0, (len(wav_B) // sr) - 5)
                 inst_wav_cutB = wav_B[segB * sr : (segB + 5) * sr]
-                Amp = np.abs(inst_wav_cutB)
-                Pow = np.mean(Amp**2)
-                if Pow > thres:
-                    sound = True
+                sound = cal_avepow_1s(inst_wav_cutB, sr, thres)
             os.makedirs("{}/{}_X".format(dir, inst), exist_ok=True)
             os.makedirs("{}/{}_A".format(dir, inst), exist_ok=True)
             os.makedirs("{}/{}_B".format(dir, inst), exist_ok=True)
@@ -80,34 +82,19 @@ for set in range(1, len(dict_test1) + 1):
             # wav_X, sr = sf.read("/nas03/assets/Dataset/slakh-2100_2/Track0{}/submixes/{}.wav".format(X, inst))
             wav_A, sr = sf.read("/nas03/assets/Dataset/slakh-2100_2/Track0{}/submixes/{}.wav".format(A, inst))
             wav_B, sr = sf.read("/nas03/assets/Dataset/slakh-2100_2/Track0{}/submixes/{}.wav".format(B, inst))
-            """
-            sound = False
-            while sound == False:
-                segX = random.randint(0, (len(wav_X) // sr) - 5)
-                inst_wav_cutX = wav_X[segX * sr : (segX + 5) * sr]
-                Amp = np.abs(inst_wav_cutX)
-                Pow = np.mean(Amp**2)
-                if Pow > thres:
-                    sound = True
-            """
+
             print(A)
             sound = False
             while sound == False:
                 segA = random.randint(0, (len(wav_A) // sr) - 5)
                 inst_wav_cutA = wav_A[segA * sr : (segA + 5) * sr]
-                Amp = np.abs(inst_wav_cutA)
-                Pow = np.mean(Amp**2)
-                if Pow > thres:
-                    sound = True
+                sound = cal_avepow_1s(inst_wav_cutA, sr, thres)
             print(B)
             sound = False
             while sound == False:
                 segB = random.randint(0, (len(wav_B) // sr) - 5)
                 inst_wav_cutB = wav_B[segB * sr : (segB + 5) * sr]
-                Amp = np.abs(inst_wav_cutB)
-                Pow = np.mean(Amp**2)
-                if Pow > thres:
-                    sound = True
+                sound = cal_avepow_1s(inst_wav_cutB, sr, thres)
             X_path = "{}/{}_X/cut{}_{}.wav".format(dir, inst, X, segX)
             A_path = "{}/{}_A/cut{}_{}.wav".format(dir, inst, A, segA)
             B_path = "{}/{}_B/cut{}_{}.wav".format(dir, inst, B, segB)
@@ -142,28 +129,19 @@ for set in range(1, len(dict_test1) + 1):
             while sound == False:
                 segX = random.randint(0, (len(wav_X) // sr) - 5)
                 inst_wav_cutX = wav_X[segX * sr : (segX + 5) * sr]
-                Amp = np.abs(inst_wav_cutX)
-                Pow = np.mean(Amp**2)
-                if Pow > thres:
-                    sound = True
+                sound = cal_avepow_1s(inst_wav_cutX, sr, thres)
             print(A)
             sound = False
             while sound == False or segX == segA:
                 segA = random.randint(0, (len(wav_A) // sr) - 5)
                 inst_wav_cutA = wav_A[segA * sr : (segA + 5) * sr]
-                Amp = np.abs(inst_wav_cutA)
-                Pow = np.mean(Amp**2)
-                if Pow > thres:
-                    sound = True
+                sound = cal_avepow_1s(inst_wav_cutA, sr, thres)
             print(B)
             sound = False
             while sound == False or segX == segB:
                 segB = random.randint(0, (len(wav_B) // sr) - 5)
                 inst_wav_cutB = wav_B[segB * sr : (segB + 5) * sr]
-                Amp = np.abs(inst_wav_cutB)
-                Pow = np.mean(Amp**2)
-                if Pow > thres:
-                    sound = True
+                sound = cal_avepow_1s(inst_wav_cutB, sr, thres)
             os.makedirs("{}/{}_X".format(dir, inst), exist_ok=True)
             os.makedirs("{}/{}_A".format(dir, inst), exist_ok=True)
             os.makedirs("{}/{}_B".format(dir, inst), exist_ok=True)
@@ -191,34 +169,19 @@ for set in range(1, len(dict_test1) + 1):
             # wav_X, sr = sf.read("/nas03/assets/Dataset/slakh-2100_2/Track0{}/submixes/{}.wav".format(X, inst))
             wav_A, sr = sf.read("/nas03/assets/Dataset/slakh-2100_2/Track0{}/submixes/{}.wav".format(A, inst))
             wav_B, sr = sf.read("/nas03/assets/Dataset/slakh-2100_2/Track0{}/submixes/{}.wav".format(B, inst))
-            """
-            sound = False
-            while sound == False:
-                segX = random.randint(0, (len(wav_X) // sr) - 5)
-                inst_wav_cutX = wav_X[segX * sr : (segX + 5) * sr]
-                Amp = np.abs(inst_wav_cutX)
-                Pow = np.mean(Amp**2)
-                if Pow > thres:
-                    sound = True
-            """
+
             print(A)
             sound = False
             while sound == False:
                 segA = random.randint(0, (len(wav_A) // sr) - 5)
                 inst_wav_cutA = wav_A[segA * sr : (segA + 5) * sr]
-                Amp = np.abs(inst_wav_cutA)
-                Pow = np.mean(Amp**2)
-                if Pow > thres:
-                    sound = True
+                sound = cal_avepow_1s(inst_wav_cutA, sr, thres)
             print(B)
             sound = False
             while sound == False:
                 segB = random.randint(0, (len(wav_B) // sr) - 5)
                 inst_wav_cutB = wav_B[segB * sr : (segB + 5) * sr]
-                Amp = np.abs(inst_wav_cutB)
-                Pow = np.mean(Amp**2)
-                if Pow > thres:
-                    sound = True
+                sound = cal_avepow_1s(inst_wav_cutB, sr, thres)
             X_path = "{}/{}_X/cut{}_{}.wav".format(dir, inst, X, segX)
             A_path = "{}/{}_A/cut{}_{}.wav".format(dir, inst, A, segA)
             B_path = "{}/{}_B/cut{}_{}.wav".format(dir, inst, B, segB)
