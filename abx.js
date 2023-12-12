@@ -243,8 +243,8 @@ function setButton() {
         document.getElementById("next2").disabled = true;
         document.getElementById("finish").disabled = true;
         if (condition1 && condition2 && condition3 && condition4) {
-                document.getElementById("finish").disabled = false;
-                break;
+            document.getElementById("finish").disabled = false;
+            break;
         }
     }
     else {
