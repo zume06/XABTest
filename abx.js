@@ -89,7 +89,10 @@ function start_experiment() {
     file_list = makeFileList(sample_list_path);
     outfile = "inst_simi_2023au_" + name + "_set" + set_num + ".csv";
     scores = (new Array(file_list.length)).fill(0);
-    eval = document.getElementsByName("eval");
+    //document.getElementsByName("eval1")はname="eval1"のラジオボタンの選択を取ってくる
+    eval1 = document.getElementsByName("eval1");
+    eval2 = document.getElementsByName("eval2");
+    eval3 = document.getElementsByName("eval3");
     init();
 
 }
@@ -174,28 +177,74 @@ function init() {
 }
 
 function evalCheck() {
-    const c = scores[n];
-    if ((c <= 0) || (c > eval.length)) {
-        for (var i = 0; i < eval.length; i++) {
-            eval[i].checked = false;
+    const c1 = scores1[n];
+    if ((c1 <= 0) || (c1 > eval1.length)) {
+        for (var i = 0; i < eval1.length; i++) {
+            eval1[i].checked = false;
         }
     }
     else {
-        eval[c - 1].checked = true;
+        eval1[c1 - 1].checked = true;
+    }
+    const c2 = scores2[n];
+    if ((c2 <= 0) || (c2 > eval2.length)) {
+        for (var i = 0; i < eval2.length; i++) {
+            eval2[i].checked = false;
+        }
+    }
+    else {
+        eval2[c2 - 1].checked = true;
+    }
+    const c3 = scores3[n];
+    if ((c3 <= 0) || (c3 > eval3.length)) {
+        for (var i = 0; i < eval3.length; i++) {
+            eval3[i].checked = false;
+        }
+    }
+    else {
+        eval3[c3 - 1].checked = true;
     }
 }
 
 
+//どういう評価がなされたらnextを表示する（document.getElementById("next2").disabled = false; にする）か
+// n は問番号
+// iは何番目のボタン押したか
+// eval[0] eval[1] eval[2] eval[3] eval[4] どれかチェックされててかつ
+// eval1~eval3全部[2]はだめ
 function setButton() {
+    var condition1
+    var condition2
+    var condition3
+    for (var i = 0; i < eval1.length; i++) {
+        if (eval1[i].checked) {
+            condition1=true;
+            break
+        }
+    }
+    for (var i = 0; i < eval2.length; i++) {
+        if (eval2[i].checked) {
+            condition2=true;
+            break
+        }
+    }
+    for (var i = 0; i < eval3.length; i++) {
+        if (eval3[i].checked) {
+            condition3=true;
+            break
+        }
+    }
+    var condition4
+    if (eval1[2].checked && eval2[2].checked && eval3[2].checked){
+        condition4=true;
+    }
     if (n == (scores.length - 1)) {
         document.getElementById("prev").disabled = false;
         document.getElementById("next2").disabled = true;
         document.getElementById("finish").disabled = true;
-        for (var i = 0; i < eval.length; i++) {
-            if (eval[i].checked) {
+        if (condition1 && condition2 && condition3 && condition4) {
                 document.getElementById("finish").disabled = false;
                 break;
-            }
         }
     }
     else {
@@ -207,82 +256,104 @@ function setButton() {
         }
         document.getElementById("next2").disabled = true;
         document.getElementById("finish").disabled = true;
-        for (var i = 0; i < eval.length; i++) {
-            //console.log('eval[' + i + '].checked:', eval[i].checked);
-            //console.log('rhythmCheckbox.checked:', rhythmCheckbox.checked);
-            //console.log('timbreCheckbox.checked:', timbreCheckbox.checked);
-            //console.log('melodyCheckbox.checked:', melodyCheckbox.checked);
-            if ((eval[i].checked) && (rhythmCheckbox.checked || timbreCheckbox.checked || melodyCheckbox.checked)) {
-                document.getElementById("next2").disabled = false;
-                break;
-            }
+        if (condition1 && condition2 && condition3 && condition4) {
+            document.getElementById("next2").disabled = false;
+            break;
         }
     }
 }
 
 
 function evaluation() {
-    for (var i = 0; i < eval.length; i++) {
-        if (eval[i].checked) {
-            scores[n] = i + 1;
+    for (var i = 0; i < eval1.length; i++) {
+        if (eval1[i].checked) {
+            scores1[n] = i;
+        }
+    }
+    for (var i = 0; i < eval2.length; i++) {
+        if (eval2[i].checked) {
+            scores2[n] = i;
+        }
+    }
+    for (var i = 0; i < eval3.length; i++) {
+        if (eval3[i].checked) {
+            scores3[n] = i;
         }
     }
     setButton();
-}
-
-var point = [];
-
-// (追加) チェックボックスがクリックされたときに呼び出される関数
-function selectpoint() {
-    // (追加) チェックボックスの選択結果を配列に保存
-    var rhythmCheckbox = document.getElementById("rhythmCheckbox");
-    var timbreCheckbox = document.getElementById("timbreCheckbox");
-    var melodyCheckbox = document.getElementById("melodyCheckbox");
-
-    point[n] = [];
-
-    if (rhythmCheckbox.checked) {
-        point[n].push("rhythm");
-    }
-    if (timbreCheckbox.checked) {
-        point[n].push("timbre");
-    }
-    if (melodyCheckbox.checked) {
-        point[n].push("melody");
-    }
-    setButton();
-}
-
-function resetCheckboxState() {
-    var rhythmCheckbox = document.getElementById("rhythmCheckbox");
-    var timbreCheckbox = document.getElementById("timbreCheckbox");
-    var melodyCheckbox = document.getElementById("melodyCheckbox");
-
-    // チェックボックスの状態をリセット
-    rhythmCheckbox.checked = false;
-    timbreCheckbox.checked = false;
-    melodyCheckbox.checked = false;
 }
 
 function exportCSV() {
-    var ans = [];
-    var conf = [];
+    var ans1 = [];
+    var conf1 = [];
     for (var i = 0; i < file_list.length; i++) {
-        if (scores[i] == 1) {
-            ans[i] = "A"
-            conf[i] = "+"
+        if (scores1[i] == 0) {
+            ans1[i] = "A"
+            conf1[i] = "+"
         }
-        else if (scores[i] == 2) {
-            ans[i] = "A"
-            conf[i] = "-"
+        else if (scores1[i] == 1) {
+            ans1[i] = "A"
+            conf1[i] = "-"
         }
-        else if (scores[i] == 3) {
-            ans[i] = "B"
-            conf[i] = "+"
+        else if (scores1[i] == 2) {
+            ans1[i] = "None"
+            conf1[i] = "None"
         }
-        else if (scores[i] == 4) {
-            ans[i] = "B"
-            conf[i] = "-"
+        else if (scores1[i] == 3) {
+            ans1[i] = "B"
+            conf1[i] = "-"
+        }
+        else if (scores1[i] == 4) {
+            ans1[i] = "B"
+            conf1[i] = "+"
+        }
+    }
+    var ans2 = [];
+    var conf2 = [];
+    for (var i = 0; i < file_list.length; i++) {
+        if (scores2[i] == 0) {
+            ans2[i] = "A"
+            conf2[i] = "+"
+        }
+        else if (scores2[i] == 1) {
+            ans2[i] = "A"
+            conf2[i] = "-"
+        }
+        else if (scores2[i] == 2) {
+            ans2[i] = "None"
+            conf2[i] = "None"
+        }
+        else if (scores2[i] == 3) {
+            ans2[i] = "B"
+            conf2[i] = "-"
+        }
+        else if (scores2[i] == 4) {
+            ans2[i] = "B"
+            conf2[i] = "+"
+        }
+    }
+    var ans3 = [];
+    var conf3 = [];
+    for (var i = 0; i < file_list.length; i++) {
+        if (scores3[i] == 0) {
+            ans3[i] = "A"
+            conf3[i] = "+"
+        }
+        else if (scores3[i] == 1) {
+            ans3[i] = "A"
+            conf3[i] = "-"
+        }
+        else if (scores3[i] == 2) {
+            ans3[i] = "None"
+            conf3[i] = "None"
+        }
+        else if (scores3[i] == 3) {
+            ans3[i] = "B"
+            conf3[i] = "-"
+        }
+        else if (scores3[i] == 4) {
+            ans3[i] = "B"
+            conf3[i] = "+"
         }
     }
 
@@ -293,7 +364,7 @@ function exportCSV() {
         }
     }
     var csvData = "";
-    csvData += "" + "X" + "," + "A" + "," + "B" + "," + "score" + "," + "conf" + "," + "ans" + "," + "point1" + "," + "point2" + "," + "point3" + "," + "enq" + "\r\n";
+    csvData += "" + "X" + "," + "A" + "," + "B" + "," + "timbre-ans" + "," + "timbre-conf" + "," + "rhythm-ans" + "," + "rhythm-conf" + "," + "melody-ans" + "," + "melody-conf" + "," + "enq" + "\r\n";
     csvData += ",,,,,,,,," + enq_num + "\r\n"
     for (var i = 0; i < file_list.length; i++) {
         csvData += "" + file_list[i][0] + "," + file_list[i][1] + ","
@@ -350,4 +421,6 @@ var scores;
 
 // since loadText() doesn't work in local
 var n = 0;
-var eval = document.getElementsByName("eval");
+var eval1 = document.getElementsByName("eval1");
+var eval2 = document.getElementsByName("eval2");
+var eval3 = document.getElementsByName("eval3");
