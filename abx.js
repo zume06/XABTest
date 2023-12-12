@@ -244,7 +244,6 @@ function setButton() {
         document.getElementById("finish").disabled = true;
         if (condition1 && condition2 && condition3 && condition4) {
             document.getElementById("finish").disabled = false;
-            break;
         }
     }
     else {
