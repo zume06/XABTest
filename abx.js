@@ -218,25 +218,25 @@ function setButton() {
     var condition3
     for (var i = 0; i < eval1.length; i++) {
         if (eval1[i].checked) {
-            condition1=true;
+            condition1 = true;
             break
         }
     }
     for (var i = 0; i < eval2.length; i++) {
         if (eval2[i].checked) {
-            condition2=true;
+            condition2 = true;
             break
         }
     }
     for (var i = 0; i < eval3.length; i++) {
         if (eval3[i].checked) {
-            condition3=true;
+            condition3 = true;
             break
         }
     }
     var condition4
-    if (eval1[2].checked && eval2[2].checked && eval3[2].checked){
-        condition4=true;
+    if (eval1[2].checked && eval2[2].checked && eval3[2].checked) {
+        condition4 = true;
     }
     if (n == (scores.length - 1)) {
         document.getElementById("prev").disabled = false;
@@ -257,7 +257,6 @@ function setButton() {
         document.getElementById("finish").disabled = true;
         if (condition1 && condition2 && condition3 && condition4) {
             document.getElementById("next2").disabled = false;
-            break;
         }
     }
 }
