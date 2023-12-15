@@ -151,7 +151,7 @@ function makeFileList(sample_list_path) {
 }
 
 function setAudio() {
-    document.getElementById("page").textContent = "" + (n + 1) + "/" + scores.length;
+    document.getElementById("page").textContent = "" + (n + 1) + "/" + scores1.length;
 
     document.getElementById("audio_x").innerHTML = 'SoundX:<br>'
         + '<audio src="' + file_list[n][0]
@@ -171,7 +171,6 @@ function setAudio() {
 
 function init() {
     n = 0;
-    point = [];
     setAudio();
     evalCheck();
     setButton();
@@ -239,7 +238,7 @@ function setButton() {
     if (eval1[2].checked && eval2[2].checked && eval3[2].checked) {
         condition4 = true;
     }
-    if (n == (scores.length - 1)) {
+    if (n == (scores1.length - 1)) {
         document.getElementById("prev").disabled = false;
         document.getElementById("next2").disabled = true;
         document.getElementById("finish").disabled = true;
@@ -368,10 +367,13 @@ function exportCSV() {
     for (var i = 0; i < file_list.length; i++) {
         csvData += "" + file_list[i][0] + "," + file_list[i][1] + ","
             + file_list[i][2] + ","
-            + scores[i] + ","
-            + conf[i] + ","
-            + ans[i] + ","
-            + point[i].join(",") + "\r\n";
+            + scores1[i] + ","
+            + scores2[i] + ","
+            + scores3[i] + ","
+            + conf1[i] + ","
+            + conf2[i] + ","
+            + conf3[i] + ","
+            + enq_num.join(",") + "\r\n";
     }
 
     const link = document.createElement("a");
