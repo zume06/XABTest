@@ -204,6 +204,9 @@ function evalCheck() {
     else {
         eval3[c3 - 1].checked = true;
     }
+    eval1[2].checked = true;
+    eval2[2].checked = true;
+    eval3[2].checked = true;
 }
 
 
