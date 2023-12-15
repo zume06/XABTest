@@ -88,7 +88,9 @@ function start_experiment() {
 
     file_list = makeFileList(sample_list_path);
     outfile = "inst_simi_2023au_" + name + "_set" + set_num + ".csv";
-    scores = (new Array(file_list.length)).fill(0);
+    scores1 = (new Array(file_list.length)).fill(0);
+    scores2 = (new Array(file_list.length)).fill(0);
+    scores3 = (new Array(file_list.length)).fill(0);
     //document.getElementsByName("eval1")はname="eval1"のラジオボタンの選択を取ってくる
     eval1 = document.getElementsByName("eval1");
     eval2 = document.getElementsByName("eval2");
@@ -173,7 +175,6 @@ function init() {
     setAudio();
     evalCheck();
     setButton();
-    resetCheckboxState();
 }
 
 function evalCheck() {
@@ -389,7 +390,6 @@ function next() {
     n++;
     setAudio();
     evalCheck();
-    resetCheckboxState();
     setButton();
 }
 
@@ -397,7 +397,6 @@ function prev() {
     n--;
     setAudio();
     evalCheck();
-    resetCheckboxState();
     setButton();
 }
 
@@ -415,7 +414,9 @@ document.onkeypress = invalid_enter();
 // global variables
 var outfile;
 var file_list;
-var scores;
+var scores1;
+var scores2;
+var scores3;
 
 // since loadText() doesn't work in local
 var n = 0;
