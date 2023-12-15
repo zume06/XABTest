@@ -213,9 +213,9 @@ function evalCheck() {
 // eval[0] eval[1] eval[2] eval[3] eval[4] どれかチェックされててかつ
 // eval1~eval3全部[2]はだめ
 function setButton() {
-    var condition1
-    var condition2
-    var condition3
+    var condition1;
+    var condition2;
+    var condition3;
     for (var i = 0; i < eval1.length; i++) {
         if (eval1[i].checked) {
             condition1 = true;
@@ -234,7 +234,8 @@ function setButton() {
             break
         }
     }
-    var condition4
+    var condition4;
+    condition4 = true;
     if (eval1[2].checked && eval2[2].checked && eval3[2].checked) {
         condition4 = false;
     }
