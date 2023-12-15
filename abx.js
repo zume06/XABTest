@@ -236,7 +236,7 @@ function setButton() {
     }
     var condition4
     if (eval1[2].checked && eval2[2].checked && eval3[2].checked) {
-        condition4 = true;
+        condition4 = false;
     }
     if (n == (scores1.length - 1)) {
         document.getElementById("prev").disabled = false;
