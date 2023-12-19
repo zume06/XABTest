@@ -373,11 +373,11 @@ function exportCSV() {
     for (var i = 0; i < file_list.length; i++) {
         csvData += "" + file_list[i][0] + "," + file_list[i][1] + ","
             + file_list[i][2] + ","
-            + scores1[i] + ","
-            + scores2[i] + ","
-            + scores3[i] + ","
+            + ans1[i] + ","
             + conf1[i] + ","
+            + ans2[i] + ","
             + conf2[i] + ","
+            + ans3[i] + ","
             + conf3[i] + ","
             + enq_num + "\r\n";
     }
