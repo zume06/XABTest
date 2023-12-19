@@ -167,6 +167,9 @@ function setAudio() {
         + '<audio src="' + file_list[n][2]
         + '" controls preload="auto">'
         + '</audio>';
+    console.log(file_list[n][0]);
+    console.log(file_list[n][1]);
+    console.log(file_list[n][2]);
 }
 
 function init() {
