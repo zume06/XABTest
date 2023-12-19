@@ -370,7 +370,6 @@ function exportCSV() {
     }
     var csvData = "";
     csvData += "" + "X" + "," + "A" + "," + "B" + "," + "timbre-ans" + "," + "timbre-conf" + "," + "rhythm-ans" + "," + "rhythm-conf" + "," + "melody-ans" + "," + "melody-conf" + "," + "enq" + "\r\n";
-    csvData += ",,,,,,,,," + enq_num + "\r\n"
     for (var i = 0; i < file_list.length; i++) {
         csvData += "" + file_list[i][0] + "," + file_list[i][1] + ","
             + file_list[i][2] + ","
@@ -380,7 +379,7 @@ function exportCSV() {
             + conf1[i] + ","
             + conf2[i] + ","
             + conf3[i] + ","
-            + enq_num.join(",") + "\r\n";
+            + enq_num + "\r\n";
     }
 
     const link = document.createElement("a");
