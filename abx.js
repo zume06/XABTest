@@ -91,6 +91,7 @@ function start_experiment() {
     scores1 = (new Array(file_list.length)).fill(0);
     scores2 = (new Array(file_list.length)).fill(0);
     scores3 = (new Array(file_list.length)).fill(0);
+    scores4 = (new Array(file_list.length)).fill(0);
     //document.getElementsByName("eval1")はname="eval1"のラジオボタンの選択を取ってくる
     eval1 = document.getElementsByName("eval1");
     eval2 = document.getElementsByName("eval2");
