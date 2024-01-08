@@ -420,7 +420,7 @@ function exportCSV() {
         }
     }
     var csvData = "";
-    csvData += "" + "X" + "," + "A" + "," + "B" + "," + "timbre-ans" + "," + "timbre-conf" + "," + "rhythm-ans" + "," + "rhythm-conf" + "," + "melody-ans" + "," + "melody-conf" + "," + "enq" + "," + "whole-ans" + "," + "whole-conf" + "\r\n";
+    csvData += "" + "X" + "," + "A" + "," + "B" + "," + "timbre-ans" + "," + "timbre-conf" + "," + "rhythm-ans" + "," + "rhythm-conf" + "," + "melody-ans" + "," + "melody-conf" + "," + "whole-ans" + "," + "whole-conf" + "," + "enq" + "\r\n";
     for (var i = 0; i < file_list.length; i++) {
         csvData += "" + file_list[i][0] + "," + file_list[i][1] + ","
             + file_list[i][2] + ","
