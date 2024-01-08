@@ -95,6 +95,7 @@ function start_experiment() {
     eval1 = document.getElementsByName("eval1");
     eval2 = document.getElementsByName("eval2");
     eval3 = document.getElementsByName("eval3");
+    eval4 = document.getElementsByName("eval4");
     init();
 
 }
@@ -207,9 +208,19 @@ function evalCheck() {
     else {
         eval3[c3 - 1].checked = true;
     }
+    const c4 = scores4[n];
+    if ((c4 <= 0) || (c4 > eval4.length)) {
+        for (var i = 0; i < eval4.length; i++) {
+            eval4[i].checked = false;
+        }
+    }
+    else {
+        eval4[c3 - 1].checked = true;
+    }
     eval1[2].checked = true;
     eval2[2].checked = true;
     eval3[2].checked = true;
+    eval4[2].checked = true;
 }
 
 
@@ -222,6 +233,7 @@ function setButton() {
     var condition1;
     var condition2;
     var condition3;
+    var condition4;
     for (var i = 0; i < eval1.length; i++) {
         if (eval1[i].checked) {
             condition1 = true;
@@ -240,16 +252,22 @@ function setButton() {
             break
         }
     }
-    var condition4;
-    condition4 = true;
-    if (eval1[2].checked && eval2[2].checked && eval3[2].checked) {
-        condition4 = false;
+    for (var i = 0; i < eval4.length; i++) {
+        if (eval4[i].checked) {
+            condition4 = true;
+            break
+        }
+    }
+    var condition5;
+    condition5 = true;
+    if (eval1[2].checked && eval2[2].checked && eval3[2].checked && eval4[2].checked) {
+        condition5 = false;
     }
     if (n == (scores1.length - 1)) {
         document.getElementById("prev").disabled = false;
         document.getElementById("next2").disabled = true;
         document.getElementById("finish").disabled = true;
-        if (condition1 && condition2 && condition3 && condition4) {
+        if (condition1 && condition2 && condition3 && condition4 && condition5) {
             document.getElementById("finish").disabled = false;
         }
     }
@@ -262,7 +280,7 @@ function setButton() {
         }
         document.getElementById("next2").disabled = true;
         document.getElementById("finish").disabled = true;
-        if (condition1 && condition2 && condition3 && condition4) {
+        if (condition1 && condition2 && condition3 && condition4 && condition5) {
             document.getElementById("next2").disabled = false;
         }
     }
@@ -283,6 +301,11 @@ function evaluation() {
     for (var i = 0; i < eval3.length; i++) {
         if (eval3[i].checked) {
             scores3[n] = i;
+        }
+    }
+    for (var i = 0; i < eval4.length; i++) {
+        if (eval4[i].checked) {
+            scores4[n] = i;
         }
     }
     setButton();
@@ -361,6 +384,30 @@ function exportCSV() {
             conf3[i] = "+"
         }
     }
+    var ans4 = [];
+    var conf4 = [];
+    for (var i = 0; i < file_list.length; i++) {
+        if (scores4[i] == 0) {
+            ans4[i] = "A"
+            conf4[i] = "+"
+        }
+        else if (scores4[i] == 1) {
+            ans4[i] = "A"
+            conf4[i] = "-"
+        }
+        else if (scores4[i] == 2) {
+            ans4[i] = "None"
+            conf4[i] = "None"
+        }
+        else if (scores4[i] == 3) {
+            ans4[i] = "B"
+            conf4[i] = "-"
+        }
+        else if (scores4[i] == 4) {
+            ans4[i] = "B"
+            conf4[i] = "+"
+        }
+    }
 
     var enq = document.getElementsByName("inst");
     for (var i = 0; i < enq.length; i++) {
@@ -369,7 +416,7 @@ function exportCSV() {
         }
     }
     var csvData = "";
-    csvData += "" + "X" + "," + "A" + "," + "B" + "," + "timbre-ans" + "," + "timbre-conf" + "," + "rhythm-ans" + "," + "rhythm-conf" + "," + "melody-ans" + "," + "melody-conf" + "," + "enq" + "\r\n";
+    csvData += "" + "X" + "," + "A" + "," + "B" + "," + "timbre-ans" + "," + "timbre-conf" + "," + "rhythm-ans" + "," + "rhythm-conf" + "," + "melody-ans" + "," + "melody-conf" + "," + "enq" + "," + "whole-ans" + "," + "whole-conf" + "\r\n";
     for (var i = 0; i < file_list.length; i++) {
         csvData += "" + file_list[i][0] + "," + file_list[i][1] + ","
             + file_list[i][2] + ","
@@ -379,6 +426,8 @@ function exportCSV() {
             + conf2[i] + ","
             + ans3[i] + ","
             + conf3[i] + ","
+            + ans4[i] + ","
+            + conf4[i] + ","
             + enq_num + "\r\n";
     }
 
@@ -431,3 +480,4 @@ var n = 0;
 var eval1 = document.getElementsByName("eval1");
 var eval2 = document.getElementsByName("eval2");
 var eval3 = document.getElementsByName("eval3");
+var eval4 = document.getElementsByName("eval4");
