@@ -260,7 +260,10 @@ function setButton() {
     }
     var condition5;
     condition5 = true;
-    if (eval1[2].checked && eval2[2].checked && eval3[2].checked && eval4[2].checked) {
+    if (eval1[2].checked && eval2[2].checked && eval3[2].checked) {
+        condition5 = false;
+    }
+    if (eval4[2].checked) {
         condition5 = false;
     }
     if (n == (scores1.length - 1)) {
