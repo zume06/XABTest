@@ -477,6 +477,7 @@ var file_list;
 var scores1;
 var scores2;
 var scores3;
+var scores4;
 
 // since loadText() doesn't work in local
 var n = 0;
